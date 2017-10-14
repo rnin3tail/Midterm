@@ -27,8 +27,10 @@ public class obstacleMovement : MonoBehaviour {
 		transform.Translate (new Vector3 (speed * Time.deltaTime, 0, 0));
 	}
 
-	void onTriggerEnter2D (Collision col) {
-		if (col.collider.tag == "Enemy") {
+	void OnTriggerEnter2D (Collider2D col) {
+		Debug.Log ("collision");
+		if (col.tag=="Enemy") {
+			Debug.Log ("Rock should destroy ship");
 			Destroy (col.gameObject);
 		}
 	}

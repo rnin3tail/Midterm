@@ -13,13 +13,18 @@ public class enemyFollow : MonoBehaviour {
 	public float spawnTimeRandom;
 	private float spawnTimer;
 
+	public AudioClip shotsfx;
+	AudioSource audio;
 
 	void Start () {
 		ResetSpawnTimer ();
+		audio = gameObject.GetComponent<AudioSource> ();
+		shotsfx = audio.clip;
 	}
 
 	void Update(){
 		target = GameObject.FindWithTag ("Player").transform;
+	
 
 
 		//rotate to look at the player
@@ -33,15 +38,17 @@ public class enemyFollow : MonoBehaviour {
 		transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
 		//move towards the player
-		if (Vector3.Distance (transform.position, target.position) > 8f) {//move if distance from target is greater than 7
-			transform.Translate (new Vector3 (speed * Time.deltaTime, 0, 0));
+		if (Vector3.Distance (transform.position, target.position) > 15f) { //move if distance from target is greater than 15
+			transform.Translate (new Vector3 (speed * Time.deltaTime, speed * Time.deltaTime, 0));
 		}
 			
-		if (Vector3.Distance (transform.position, target.position) <= 8f) {
+		if (Vector3.Distance (transform.position, target.position) <= 15f) { 
 			spawnTimer -= Time.deltaTime;
 			Debug.Log (spawnTimer);
 			if (spawnTimer <= 0.0f) {
+				audio.PlayOneShot (shotsfx, 1.0f);
 				Instantiate (enemyBullet, enemyBulletPoint.position, enemyBulletPoint.rotation);
+
 				Debug.Log (spawnTimer);
 				ResetSpawnTimer ();
 			}
@@ -53,6 +60,13 @@ public class enemyFollow : MonoBehaviour {
 		spawnTimer = (float)(spawnTime + Random.Range(0, spawnTimeRandom*100)/100.0);
 	}
 
+	void OnTriggerEnter2D (Collider2D col) {
+		Debug.Log ("collision");
+		if (col.tag=="Rock") {
+			Debug.Log ("Rock should destroy ship");
+			Destroy (this.gameObject);
+		}
+	}
 
 
 }
