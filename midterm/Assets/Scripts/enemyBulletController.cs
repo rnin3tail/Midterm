@@ -22,7 +22,7 @@ public class enemyBulletController : MonoBehaviour {
 	void OnTriggerEnter2D (Collider2D other) {
 	
 		if (other.tag == "Player"){
-			Destroy (other.gameObject);
+			player.deathCheck = true;
 		}
 
 		if (other.tag != "Enemy" && other.tag != "Bullet") {

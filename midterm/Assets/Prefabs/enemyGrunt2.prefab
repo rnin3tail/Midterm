@@ -96,7 +96,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 6832373760b9eab4eb32c7d71c879aaa, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -180,10 +180,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 7
   enemyBulletPoint: {fileID: 4674957466613030}
-  enemyBullet: {fileID: 1841645218285218, guid: 28db2c3b5f21d482bbe06d82ee38daf4,
+  enemyBullet: {fileID: 1841645218285218, guid: 161e38c171b513f428287b52a8674876,
     type: 2}
   spawnTime: 1
   spawnTimeRandom: 1
+  shotsfx: {fileID: 0}
 --- !u!212 &212415070118637216
 SpriteRenderer:
   m_ObjectHideFlags: 1

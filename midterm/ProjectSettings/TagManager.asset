@@ -12,6 +12,8 @@ TagManager:
   - Enemy
   - enemyShip
   - Rock
+  - Button
+  - GameOver
   layers:
   - Default
   - TransparentFX

@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
+	public GameObject gameOver;
+	public GameObject pauseScreen;
+	private bool paused;
+	private bool canControl;
+
 	public float speed;
 	public float maxSpeed;
 
@@ -30,6 +35,10 @@ public class PlayerController : MonoBehaviour {
 	void Start () {
 		curHealth = maxHealth;
 
+		deathCheck = false;
+		paused = false; 
+		canControl = true;
+
 		speed = 10f; 
 		maxSpeed = 50f;
 		rigiBody = gameObject.GetComponent<Rigidbody2D> (); // Gain access to Ship's body component
@@ -41,6 +50,7 @@ public class PlayerController : MonoBehaviour {
 		leftWall = GameObject.FindGameObjectWithTag ("LWall");
 		rightWall = GameObject.FindGameObjectWithTag ("RWall");
 
+		gameOver.SetActive (false);
 	}
 
 	void Update () {
@@ -55,7 +65,7 @@ public class PlayerController : MonoBehaviour {
 			transform.Rotate (Vector3.forward * 10f);
 		}
 		//if (Input.GetKeyUp (KeyCode.LeftArrow)) { 
-			//rigiBody.velocity = new Vector2 (rigiBody.velocity.x + speed, rigiBody.velocity.y);
+		//rigiBody.velocity = new Vector2 (rigiBody.velocity.x + speed, rigiBody.velocity.y);
 		//}
 
 // Turn right
@@ -71,7 +81,7 @@ public class PlayerController : MonoBehaviour {
 		if (Input.GetKey (KeyCode.UpArrow)) {
 			//rigiBody.velocity = new Vector2 (rigiBody.velocity.x, rigiBody.velocity.y + speed);
 			rigiBody.drag = 0f;
-			rigiBody.AddForce(transform.up * speed);
+			rigiBody.AddForce (transform.up * speed);
 		}
 
 // Slow down once UP key is released
@@ -93,13 +103,38 @@ public class PlayerController : MonoBehaviour {
 		//if (Input.GetKeyUp (KeyCode.DownArrow)) {
 		//	rigiBody.velocity = new Vector2 (rigiBody.velocity.x, rigiBody.velocity.y + speed);
 		//}
-// Shoot Gun
-		if (Input.GetKeyDown (KeyCode.Space)) {
-			Instantiate (bullet,bulletPoint.position,bulletPoint.rotation); 
-			audio.PlayOneShot(shotsfx,1.0f);
-		}	
-	}
-
+// Shoot Gun. Disables shooting while in pause mode.
+		if (canControl == true) {
+			
+			if (Input.GetKeyDown (KeyCode.Space)) {
+				Instantiate (bullet, bulletPoint.position, bulletPoint.rotation); 
+				audio.PlayOneShot (shotsfx, 1.0f);
+			}
+		}
+// Pause Menu. Also disables shooting.
+		if (Input.GetKeyDown (KeyCode.Escape)) {
+			if (paused == false) {
+				Time.timeScale = 0.0f;
+				pauseScreen.SetActive (true);
+				paused = true;
+				canControl = false;
+				return;
+			}
+			if (paused == true) {
+				Time.timeScale = 1.0f;
+				pauseScreen.SetActive (false);
+				paused = false;
+				canControl = true;
+				return;
+			}
+		}
+//Checks to see if player is dead
+		if (deathCheck == true) {
+			StartCoroutine ("DelayedRespawn");
+		}
+	
+}
+// Collisions... Wall collisions cause ship to transform to the opposite wall.
 	void OnTriggerEnter2D (Collider2D col) {
 		if (col.tag == "BWall") {
 			Debug.Log ("Hit Wall");
@@ -118,12 +153,31 @@ public class PlayerController : MonoBehaviour {
 			transform.position = new Vector2 (leftWall.transform.position.x+3f, transform.position.y);
 		}
 		if (col.tag == "Enemy") {
-			Destroy (this.gameObject);
+			deathCheck = true;
 
 		}
 		if (col.tag == "Rock") {
-			Destroy (this.gameObject);
+			deathCheck = true;
 		}
 	}
+//Player has died
+	void Death () {
+		deathCheck = true;
+		gameOver.SetActive(true);
+
+		if (deathCheck)
+		{
+			Debug.Log("Player is dead!");
+			Time.timeScale = 0; //pause everything.
+		}
+	}
+//Wait a bit before death
+	IEnumerator DelayedRespawn () {
+		gameObject.GetComponent<SpriteRenderer> ().enabled = false;
+		yield return new WaitForSeconds (.3f);
+		Death();
+
+	}
+		
 
 }
