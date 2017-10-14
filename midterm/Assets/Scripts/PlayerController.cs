@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
+// Pause and Game Over screen. canControl lets us choose when the player has control of the ship.
 	public GameObject gameOver;
 	public GameObject pauseScreen;
 	private bool paused;
-	private bool canControl;
+	public bool canControl;
 
 	public float speed;
 	public float maxSpeed;
@@ -33,28 +34,32 @@ public class PlayerController : MonoBehaviour {
 	public GameObject bullet;
 
 	void Start () {
+		
 		curHealth = maxHealth;
 
 		deathCheck = false;
 		paused = false; 
-		canControl = true;
+		canControl = false;
 
 		speed = 10f; 
 		maxSpeed = 50f;
 		rigiBody = gameObject.GetComponent<Rigidbody2D> (); // Gain access to Ship's body component
 		//anim = gameObject.GetComponent<Animator>();
 		audio = gameObject.GetComponent<AudioSource> ();
-
+//four walls in the level
 		topWall = GameObject.FindGameObjectWithTag ("TWall");
 		botWall = GameObject.FindGameObjectWithTag ("BWall");
 		leftWall = GameObject.FindGameObjectWithTag ("LWall");
 		rightWall = GameObject.FindGameObjectWithTag ("RWall");
-
+// turn off the game over screen 
 		gameOver.SetActive (false);
+
 	}
 
 	void Update () {
-		
+
+	if (canControl == true) {
+			
 // *** adds animation to deaths and being damaged.
 		//anim.SetBool ("isAlive", deathCheck);
 		//anim.SetBool ("isDamaged", hurt);
@@ -103,14 +108,13 @@ public class PlayerController : MonoBehaviour {
 		//if (Input.GetKeyUp (KeyCode.DownArrow)) {
 		//	rigiBody.velocity = new Vector2 (rigiBody.velocity.x, rigiBody.velocity.y + speed);
 		//}
+
 // Shoot Gun. Disables shooting while in pause mode.
-		if (canControl == true) {
-			
-			if (Input.GetKeyDown (KeyCode.Space)) {
-				Instantiate (bullet, bulletPoint.position, bulletPoint.rotation); 
-				audio.PlayOneShot (shotsfx, 1.0f);
-			}
+		if (Input.GetKeyDown (KeyCode.Space)) {
+			Instantiate (bullet, bulletPoint.position, bulletPoint.rotation); 
+			audio.PlayOneShot (shotsfx, 1.0f);
 		}
+	}
 // Pause Menu. Also disables shooting.
 		if (Input.GetKeyDown (KeyCode.Escape)) {
 			if (paused == false) {
@@ -164,6 +168,7 @@ public class PlayerController : MonoBehaviour {
 	void Death () {
 		deathCheck = true;
 		gameOver.SetActive(true);
+		canControl = false;
 
 		if (deathCheck)
 		{
@@ -178,6 +183,6 @@ public class PlayerController : MonoBehaviour {
 		Death();
 
 	}
-		
+
 
 }

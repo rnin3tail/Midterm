@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(AudioSource))]
 public class ChangeScene : MonoBehaviour {
 
+//
 	public AudioClip uiSound;
 	AudioSource audio;
 
@@ -33,8 +34,6 @@ public class ChangeScene : MonoBehaviour {
 	{
 		audio.PlayOneShot(uiSound, 1.0f);
 		yield return new WaitForSeconds(1);
-
-
 	}
 
 }
