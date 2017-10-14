@@ -15,7 +15,8 @@ using UnityEngine;
 public class SpawnerScript : MonoBehaviour {
 
 	//Public Variables
-	public GameObject prefabToSpawn;
+	public GameObject enemySpawn;
+	public GameObject rockSpawn;
 	public float spawnTime;
 	public float spawnTimeRandom;
 	//Private Variables
@@ -33,7 +34,10 @@ public class SpawnerScript : MonoBehaviour {
 		spawnTimer -= Time.deltaTime;
 		if (spawnTimer <= 0.0f)
 		{
-			Instantiate(prefabToSpawn, transform.position, Quaternion.identity);
+			Vector3 position = new Vector3 (Random.Range (-25f, 25f), Random.Range (-19f, 19f), 0);
+			Instantiate (rockSpawn, position, Quaternion.identity);
+
+			Instantiate(enemySpawn, transform.position, Quaternion.identity);
 			ResetSpawnTimer();
 		}
 	}

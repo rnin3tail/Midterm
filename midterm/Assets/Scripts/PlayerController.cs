@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour {
 	public float maxSpeed;
 
 	private Rigidbody2D rigiBody;
-	private Animator anim;
+	//private Animator anim;
 
 	public AudioClip shotsfx;
 	AudioSource audio;
@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour {
 		speed = 10f; 
 		maxSpeed = 50f;
 		rigiBody = gameObject.GetComponent<Rigidbody2D> (); // Gain access to Ship's body component
-		anim = gameObject.GetComponent<Animator>();
+		//anim = gameObject.GetComponent<Animator>();
 		audio = gameObject.GetComponent<AudioSource> ();
 
 		topWall = GameObject.FindGameObjectWithTag ("TWall");
@@ -46,8 +46,8 @@ public class PlayerController : MonoBehaviour {
 	void Update () {
 		
 // *** adds animation to deaths and being damaged.
-		anim.SetBool ("isAlive", deathCheck);
-		anim.SetBool ("isDamaged", hurt);
+		//anim.SetBool ("isAlive", deathCheck);
+		//anim.SetBool ("isDamaged", hurt);
 
 // Turn Left
 		if (Input.GetKey (KeyCode.LeftArrow)) { 
@@ -117,7 +117,13 @@ public class PlayerController : MonoBehaviour {
 			Debug.Log ("Hit Wall");
 			transform.position = new Vector2 (leftWall.transform.position.x+3f, transform.position.y);
 		}
+		if (col.tag == "Enemy") {
+			Destroy (this.gameObject);
 
+		}
+		if (col.tag == "Rock") {
+			Destroy (this.gameObject);
+		}
 	}
 
 }

@@ -48,9 +48,9 @@ public class BulletController : MonoBehaviour {
 
 		}
 //Destroys meteors
-		if (other.tag == "meteor") {
+		if (other.tag == "Rock") {
 			audio.PlayOneShot (meteorSfx, 1.0f); 
-			Instantiate (meteorDeath, other.transform.position, other.transform.rotation);
+			//Instantiate (meteorDeath, other.transform.position, other.transform.rotation);
 			Destroy (other.gameObject);
 		}
 //Destroys bullet if it hits anything other than an enemy ship or player.

@@ -11,6 +11,7 @@ TagManager:
   - TWall
   - Enemy
   - enemyShip
+  - Rock
   layers:
   - Default
   - TransparentFX

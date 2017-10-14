@@ -8,36 +8,43 @@ public class enemyFollow : MonoBehaviour {
 	public float speed = 3f;
 	public Transform enemyBulletPoint;
 	public GameObject enemyBullet;
+
 	public float spawnTime;
 	public float spawnTimeRandom;
 	private float spawnTimer;
 
 
 	void Start () {
-
+		ResetSpawnTimer ();
 	}
 
 	void Update(){
 		target = GameObject.FindWithTag ("Player").transform;
 
+
 		//rotate to look at the player
-		transform.LookAt(target.position);
+		//transform.LookAt(target.position);
+		//transform.Rotate(new Vector3(0, -90, 0),Space.Self);//correcting the original rotation
 
-		transform.Rotate(new Vector3(0,-90, 0),Space.Self);//correcting the original rotation
-
+//This seems to work better. However, the ships go in a circle around  the player. If you get close they shoot.
+		Vector3 dir = target.position - transform.position;
+		float angle = Mathf.Atan2(dir.y,dir.x) * Mathf.Rad2Deg;
+		angle = angle - 90f;
+		transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
 		//move towards the player
-		if (Vector3.Distance (transform.position, target.position) > 7f) {//move if distance from target is greater than 7
+		if (Vector3.Distance (transform.position, target.position) > 8f) {//move if distance from target is greater than 7
 			transform.Translate (new Vector3 (speed * Time.deltaTime, 0, 0));
 		}
 			
-
-		if (Vector3.Distance (transform.position, target.position) < 7f) {
+		if (Vector3.Distance (transform.position, target.position) <= 8f) {
 			spawnTimer -= Time.deltaTime;
+			Debug.Log (spawnTimer);
 			if (spawnTimer <= 0.0f) {
 				Instantiate (enemyBullet, enemyBulletPoint.position, enemyBulletPoint.rotation);
+				Debug.Log (spawnTimer);
+				ResetSpawnTimer ();
 			}
-		
 		}
 
 	}
@@ -45,5 +52,7 @@ public class enemyFollow : MonoBehaviour {
 	{
 		spawnTimer = (float)(spawnTime + Random.Range(0, spawnTimeRandom*100)/100.0);
 	}
+
+
 
 }

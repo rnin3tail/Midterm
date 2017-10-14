@@ -182,8 +182,8 @@ MonoBehaviour:
   enemyBulletPoint: {fileID: 4427188023604724}
   enemyBullet: {fileID: 1841645218285218, guid: 28db2c3b5f21d482bbe06d82ee38daf4,
     type: 2}
-  spawnTime: 50
-  spawnTimeRandom: 55
+  spawnTime: 3
+  spawnTimeRandom: 3
 --- !u!212 &212143885455212866
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -193,6 +193,7 @@ SpriteRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -208,6 +209,7 @@ SpriteRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
