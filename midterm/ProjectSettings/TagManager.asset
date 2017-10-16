@@ -14,6 +14,7 @@ TagManager:
   - Rock
   - Button
   - GameOver
+  - GameMaster
   layers:
   - Default
   - TransparentFX

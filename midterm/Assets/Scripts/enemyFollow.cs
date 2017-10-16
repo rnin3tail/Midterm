@@ -60,6 +60,7 @@ public class enemyFollow : MonoBehaviour {
 		spawnTimer = (float)(spawnTime + Random.Range(0, spawnTimeRandom*100)/100.0);
 	}
 
+// Rocks should destroy enemy ships. BUt they don't :/
 	void OnTriggerEnter2D (Collider2D col) {
 		Debug.Log ("collision");
 		if (col.tag=="Rock") {

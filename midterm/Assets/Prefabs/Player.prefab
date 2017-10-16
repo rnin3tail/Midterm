@@ -196,7 +196,7 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1310857657995648}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 0}
   m_CullingMode: 0
@@ -217,9 +217,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4a03a74fa2119d4d8d2ccb758b2356d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOver: {fileID: 0}
+  pauseScreen: {fileID: 0}
+  canControl: 0
   speed: 0
   maxSpeed: 0
   shotsfx: {fileID: 8300000, guid: 6832373760b9eab4eb32c7d71c879aaa, type: 3}
+  damagesfx: {fileID: 0}
   curHealth: 0
   maxHealth: 3
   deathCheck: 0
@@ -239,6 +243,7 @@ SpriteRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -254,6 +259,7 @@ SpriteRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5

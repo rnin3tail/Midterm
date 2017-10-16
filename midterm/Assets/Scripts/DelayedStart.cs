@@ -5,7 +5,7 @@ using UnityEngine;
 public class DelayedStart : MonoBehaviour {
 
 	public GameObject countDown;
-	public PlayerController pc;
+	private PlayerController pc;
 
 // Whenever the level starts it goes straight to a StartDelay method which counts down 3 seconds before starting.
 	void Start () {

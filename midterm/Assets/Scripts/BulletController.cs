@@ -9,6 +9,8 @@ public class BulletController : MonoBehaviour {
 	public GameObject bullet;
 	private PlayerController player;
 
+// GM for point system
+	private GameMaster gm;
 
 
 	public GameObject enemyShipDeath;
@@ -21,8 +23,10 @@ public class BulletController : MonoBehaviour {
 
 	void Start () {
 
-// Obtain playercontroller and audio component
+// Obtain GameMaster
+		gm = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster> (); 
 
+// Obtain playercontroller and audio component
 		player = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerController> ();
 		audio = GetComponent<AudioSource> ();
 
@@ -38,22 +42,29 @@ public class BulletController : MonoBehaviour {
 	void OnTriggerEnter2D (Collider2D other) {
 		
 //Destroys enemy ships.
-		if (other.tag == "Enemy"){
-			Destroy (other.gameObject);
-		}
-		if (other.tag == "enemyShip") {
+		if (other.tag == "Enemy") {
 			audio.PlayOneShot (enemyShipSfx, 1.0f);
-			Instantiate (enemyShipDeath, other.transform.position, other.transform.rotation);
+			gm.points += 100;
+			//Instantiate (enemyShipDeath, other.transform.position, other.transform.rotation);
+			Destroy (other.gameObject);
+
+		}
+// etc etc, New point values and effects for different enemies.
+		if (other.tag == "enemy2") {
+			audio.PlayOneShot (enemyShipSfx, 1.0f);
+			gm.points += 100;
+			//Instantiate (enemyShipDeath, other.transform.position, other.transform.rotation);
 			Destroy (other.gameObject);
 
 		}
 //Destroys meteors
 		if (other.tag == "Rock") {
 			audio.PlayOneShot (meteorSfx, 1.0f); 
+			gm.points += 50;
 			//Instantiate (meteorDeath, other.transform.position, other.transform.rotation);
 			Destroy (other.gameObject);
 		}
-//Destroys bullet if it hits anything other than an enemy ship or player.
+//Preserves bullet if it hits another bullet or the player. Otherwise, destroys it.
 		if (other.tag != "Player" && other.tag != "Bullet") {
 			if (other.transform.parent != null) {
 				if (other.transform.parent.tag == "Player") {

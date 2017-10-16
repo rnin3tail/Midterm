@@ -9,12 +9,12 @@ public class enemyBulletController : MonoBehaviour {
 	private PlayerController player;
 
 
-	// Use this for initialization
+// Use this for initialization
 	void Start () {
 		player = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerController> ();
 	}
 	
-	// Update is called once per frame
+// Update is called once per frame
 	void Update () {
 		GetComponent<Rigidbody2D> ().AddForce(transform.up * speed);
 	}
@@ -22,9 +22,10 @@ public class enemyBulletController : MonoBehaviour {
 	void OnTriggerEnter2D (Collider2D other) {
 	
 		if (other.tag == "Player"){
-			player.deathCheck = true;
+			player.Damage (1);
 		}
 
+//Preserves bullet if it hits an Enemy (including itself) and other bullets. Otherwise, destroys it.
 		if (other.tag != "Enemy" && other.tag != "Bullet") {
 			if (other.transform.parent != null) {
 				if (other.transform.parent.tag == "Enemy") {

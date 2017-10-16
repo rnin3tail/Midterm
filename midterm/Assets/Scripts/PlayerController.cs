@@ -10,13 +10,15 @@ public class PlayerController : MonoBehaviour {
 	private bool paused;
 	public bool canControl;
 
+//Movement speed and control
 	public float speed;
 	public float maxSpeed;
-
 	private Rigidbody2D rigiBody;
 	//private Animator anim;
 
+//Plays audio
 	public AudioClip shotsfx;
+	public AudioClip damagesfx;
 	AudioSource audio;
 
 //*** health system
@@ -24,11 +26,13 @@ public class PlayerController : MonoBehaviour {
 	public int maxHealth = 3;
 	public bool deathCheck;
 	public bool hurt;
+
 //Boundaries
 	public GameObject topWall;
 	public GameObject botWall;
 	public GameObject leftWall;
 	public GameObject rightWall;
+
 //laser beam
 	public Transform bulletPoint;
 	public GameObject bullet;
@@ -133,7 +137,7 @@ public class PlayerController : MonoBehaviour {
 			}
 		}
 //Checks to see if player is dead
-		if (deathCheck == true) {
+		if (curHealth <= 0) {
 			StartCoroutine ("DelayedRespawn");
 		}
 	
@@ -157,11 +161,14 @@ public class PlayerController : MonoBehaviour {
 			transform.position = new Vector2 (leftWall.transform.position.x+3f, transform.position.y);
 		}
 		if (col.tag == "Enemy") {
-			deathCheck = true;
+			Damage (1);
+			Destroy (col.gameObject);
 
 		}
 		if (col.tag == "Rock") {
-			deathCheck = true;
+			Damage (1);
+			Destroy (col.gameObject);
+
 		}
 	}
 //Player has died
@@ -183,6 +190,11 @@ public class PlayerController : MonoBehaviour {
 		Death();
 
 	}
+// Player was hit.
+	public void Damage (int dmg) {
+		audio.PlayOneShot (damagesfx, 1.0f);
+		curHealth -= dmg;
 
+	}
 
 }
