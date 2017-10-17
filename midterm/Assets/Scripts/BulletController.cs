@@ -8,6 +8,8 @@ public class BulletController : MonoBehaviour {
 	public float speed;
 	public GameObject bullet;
 	private PlayerController player;
+	int bossHealth = 2;
+	//public GameObject boss;
 
 // GM for point system
 	private GameMaster gm;
@@ -29,7 +31,7 @@ public class BulletController : MonoBehaviour {
 // Obtain playercontroller and audio component
 		player = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerController> ();
 		audio = GetComponent<AudioSource> ();
-
+		//boss = GameObject.FindGameObjectWithTag ("BossBattle");
 	}
 	
 	// Update is called once per frame
@@ -37,6 +39,9 @@ public class BulletController : MonoBehaviour {
 
 		GetComponent<Rigidbody2D> ().AddForce(transform.up * speed);
 
+		//if (bossHealth <= 0) {
+			//Destroy (boss);
+		//}
 	}
 
 	void OnTriggerEnter2D (Collider2D other) {
@@ -57,6 +62,17 @@ public class BulletController : MonoBehaviour {
 			Destroy (other.gameObject);
 
 		}
+		if (other.tag == "BossBattle") {
+			audio.PlayOneShot (enemyShipSfx, 1.0f);
+			bossHealth -= 1;
+			gm.points += 20; //testing to see if this registers
+			Debug.Log ("Current bossDamage is: " + bossHealth);
+			//bossDeath();
+		}
+		if (other.tag == "BossBattle" && bossHealth == 0) {
+			Destroy (other.gameObject);
+			gm.points += 300;
+		}
 //Destroys meteors
 		if (other.tag == "Rock") {
 			audio.PlayOneShot (meteorSfx, 1.0f); 
@@ -76,4 +92,10 @@ public class BulletController : MonoBehaviour {
 		}
 
 	}
+	//public void bossDeath(){
+	//	bossHealth -= 1;
+	//	if (bossHealth < 0) {
+	//		Destroy (boss);
+	//	}
+	//}
 }

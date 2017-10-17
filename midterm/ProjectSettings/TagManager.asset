@@ -15,6 +15,7 @@ TagManager:
   - Button
   - GameOver
   - GameMaster
+  - BossBattle
   layers:
   - Default
   - TransparentFX
