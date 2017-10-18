@@ -12,14 +12,12 @@ public class BulletController : MonoBehaviour {
 // GM for point system
 	private GameMaster gm;
 
-
-	public GameObject enemyShipDeath;
-	public GameObject meteorDeath;
-
+//audio
 	AudioSource audio;
 	public AudioClip enemyShipSfx;
 	public AudioClip meteorSfx;
-
+//particle 
+	public GameObject meteorDeath;
 
 	void Start () {
 
@@ -28,7 +26,7 @@ public class BulletController : MonoBehaviour {
 
 // Obtain playercontroller and audio component
 		player = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerController> ();
-		audio = GetComponent<AudioSource> ();
+		audio = gameObject.GetComponent<AudioSource> ();
 
 	}
 	
@@ -44,24 +42,29 @@ public class BulletController : MonoBehaviour {
 //Destroys enemy ships.
 		if (other.tag == "Enemy") {
 			audio.PlayOneShot (enemyShipSfx, 1.0f);
+			other.GetComponent<Animator> ().Play ("gruntDeath");
 			gm.points += 100;
-			//Instantiate (enemyShipDeath, other.transform.position, other.transform.rotation);
-			Destroy (other.gameObject);
+			other.GetComponent<Collider2D> ().enabled = false;
+			other.GetComponent<enemyFollow> ().enabled = false;
+			Destroy (other.gameObject,1f);
 
 		}
 // etc etc, New point values and effects for different enemies.
 		if (other.tag == "enemy2") {
 			audio.PlayOneShot (enemyShipSfx, 1.0f);
+			other.GetComponent<Animator> ().Play ("gruntDeath");
 			gm.points += 100;
-			//Instantiate (enemyShipDeath, other.transform.position, other.transform.rotation);
-			Destroy (other.gameObject);
+			other.GetComponent<Collider2D> ().enabled = false;
+			other.GetComponent<enemyFollow> ().enabled = false;
+			Destroy (other.gameObject,1f);
 
 		}
 //Destroys meteors
 		if (other.tag == "Rock") {
-			audio.PlayOneShot (meteorSfx, 1.0f); 
+			audio.PlayOneShot (meteorSfx, 1.0f);
+			Instantiate (meteorDeath, other.transform.position, other.transform.rotation);
 			gm.points += 50;
-			//Instantiate (meteorDeath, other.transform.position, other.transform.rotation);
+			other.GetComponent<Collider2D> ().enabled = false;
 			Destroy (other.gameObject);
 		}
 //Preserves bullet if it hits another bullet or the player. Otherwise, destroys it.
@@ -71,9 +74,17 @@ public class BulletController : MonoBehaviour {
 					return;
 				}
 			}
+
 			Debug.Log ("Hit: " + other.tag);
-			Destroy (this.gameObject);
+			StartCoroutine ("DelayedDestruction");
 		}
 
 	}
+
+	IEnumerator DelayedDestruction () {
+
+		yield return new WaitForSeconds (1f);	
+		Destroy (this.gameObject, 1f); // enemyShipSfx.length makes the game wait that amount of seconds before destrying. Gives a chance for audio to play. 
+	}
+
 }

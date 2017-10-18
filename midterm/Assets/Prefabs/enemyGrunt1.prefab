@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 58634370931013882}
   - component: {fileID: 82102987118181782}
   - component: {fileID: 114328577221693118}
+  - component: {fileID: 95807704479345334}
   m_Layer: 0
   m_Name: enemyGrunt1
   m_TagString: Enemy
@@ -167,6 +168,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!95 &95807704479345334
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1483757438366248}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9d5d1cd30758c00478cfab9c262f5820, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114328577221693118
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -182,8 +200,8 @@ MonoBehaviour:
   enemyBulletPoint: {fileID: 4427188023604724}
   enemyBullet: {fileID: 1841645218285218, guid: 161e38c171b513f428287b52a8674876,
     type: 2}
-  spawnTime: 1
-  spawnTimeRandom: 1
+  spawnTime: 2
+  spawnTimeRandom: 2
   shotsfx: {fileID: 0}
 --- !u!212 &212143885455212866
 SpriteRenderer:

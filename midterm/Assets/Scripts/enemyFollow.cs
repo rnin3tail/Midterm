@@ -24,8 +24,6 @@ public class enemyFollow : MonoBehaviour {
 
 	void Update(){
 		target = GameObject.FindWithTag ("Player").transform;
-	
-
 
 		//rotate to look at the player
 		//transform.LookAt(target.position);
@@ -60,14 +58,12 @@ public class enemyFollow : MonoBehaviour {
 		spawnTimer = (float)(spawnTime + Random.Range(0, spawnTimeRandom*100)/100.0);
 	}
 
-// Rocks should destroy enemy ships. BUt they don't :/
+// Rocks should destroy enemy ships. But they don't :/
 	void OnTriggerEnter2D (Collider2D col) {
 		Debug.Log ("collision");
-		if (col.tag=="Rock") {
+		if (col.tag== "Rock") {
 			Debug.Log ("Rock should destroy ship");
 			Destroy (this.gameObject);
 		}
 	}
-
-
 }

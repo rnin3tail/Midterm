@@ -14,11 +14,13 @@ public class PlayerController : MonoBehaviour {
 	public float speed;
 	public float maxSpeed;
 	private Rigidbody2D rigiBody;
-	//private Animator anim;
+//Animator
+	private Animator anim;
 
 //Plays audio
 	public AudioClip shotsfx;
 	public AudioClip damagesfx;
+	public AudioClip deathsfx;
 	AudioSource audio;
 
 //*** health system
@@ -37,18 +39,26 @@ public class PlayerController : MonoBehaviour {
 	public Transform bulletPoint;
 	public GameObject bullet;
 
+// Enemy Death stuff
+	public AudioClip enemyShipSfx;
+	public AudioClip meteorSfx;
+//particle 
+	public GameObject meteorDeath;
+
+
 	void Start () {
 		
 		curHealth = maxHealth;
 
 		deathCheck = false;
+		hurt = false;
 		paused = false; 
 		canControl = false;
 
 		speed = 10f; 
 		maxSpeed = 50f;
 		rigiBody = gameObject.GetComponent<Rigidbody2D> (); // Gain access to Ship's body component
-		//anim = gameObject.GetComponent<Animator>();
+		anim = gameObject.GetComponent<Animator>();
 		audio = gameObject.GetComponent<AudioSource> ();
 //four walls in the level
 		topWall = GameObject.FindGameObjectWithTag ("TWall");
@@ -65,13 +75,18 @@ public class PlayerController : MonoBehaviour {
 	if (canControl == true) {
 			
 // *** adds animation to deaths and being damaged.
-		//anim.SetBool ("isAlive", deathCheck);
-		//anim.SetBool ("isDamaged", hurt);
+		anim.SetBool ("isDead", deathCheck);
+		anim.SetBool ("isDamaged", hurt);
+	
+		//Turns hurt animation off after it runs once
+			if (hurt = true) {
+				hurt = false;
+			}
 
 // Turn Left
 		if (Input.GetKey (KeyCode.LeftArrow)) { 
 			//rigiBody.velocity = new Vector2 (rigiBody.velocity.x - speed, rigiBody.velocity.y);
-			transform.Rotate (Vector3.forward * 10f);
+			transform.Rotate (Vector3.forward * 5f);
 		}
 		//if (Input.GetKeyUp (KeyCode.LeftArrow)) { 
 		//rigiBody.velocity = new Vector2 (rigiBody.velocity.x + speed, rigiBody.velocity.y);
@@ -80,7 +95,7 @@ public class PlayerController : MonoBehaviour {
 // Turn right
 		if (Input.GetKey (KeyCode.RightArrow)) { 
 			//rigiBody.velocity = new Vector2 (rigiBody.velocity.x + speed, rigiBody.velocity.y);
-			transform.Rotate (Vector3.forward * -10f);
+			transform.Rotate (Vector3.forward * -5f);
 		}
 		//if (Input.GetKeyUp (KeyCode.RightArrow)) { 
 		//	//rigiBody.velocity = new Vector2 (rigiBody.velocity.x - speed, rigiBody.velocity.y);
@@ -162,37 +177,49 @@ public class PlayerController : MonoBehaviour {
 		}
 		if (col.tag == "Enemy") {
 			Damage (1);
-			Destroy (col.gameObject);
-
+			audio.PlayOneShot (enemyShipSfx, 1.0f);
+			col.GetComponent<Animator> ().Play ("gruntDeath");
+			Destroy (col.gameObject,1f);
 		}
 		if (col.tag == "Rock") {
 			Damage (1);
+			audio.PlayOneShot (meteorSfx, 1.0f);
+			Instantiate (meteorDeath, col.transform.position, col.transform.rotation);
 			Destroy (col.gameObject);
 
 		}
 	}
 //Player has died
 	void Death () {
-		deathCheck = true;
-		gameOver.SetActive(true);
 		canControl = false;
 
 		if (deathCheck)
 		{
 			Debug.Log("Player is dead!");
+			gameOver.SetActive(true);
+			canControl = false;
 			Time.timeScale = 0; //pause everything.
 		}
 	}
 //Wait a bit before death
 	IEnumerator DelayedRespawn () {
-		gameObject.GetComponent<SpriteRenderer> ().enabled = false;
-		yield return new WaitForSeconds (.3f);
+		//gameObject.GetComponent<SpriteRenderer> ().enabled = false;
+		yield return new WaitForSeconds (.7f);
 		Death();
 
 	}
 // Player was hit.
 	public void Damage (int dmg) {
-		audio.PlayOneShot (damagesfx, 1.0f);
+
+		if (curHealth > 1) {  // if player has more than 1 health than he is damaged
+			hurt = true;
+			audio.PlayOneShot (damagesfx, 1.0f);
+
+		} else { // otherwise the player will explode.
+			deathCheck = true;
+			audio.PlayOneShot (deathsfx, 1.0f);
+
+		}
 		curHealth -= dmg;
 
 	}

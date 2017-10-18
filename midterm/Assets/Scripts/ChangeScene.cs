@@ -12,7 +12,7 @@ public class ChangeScene : MonoBehaviour {
 
 	private void Start()
 	{
-		audio = GetComponent<AudioSource>();
+		audio = gameObject.GetComponent<AudioSource>();
 
 	}
 

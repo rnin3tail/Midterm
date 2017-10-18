@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4674957466613030}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: BulletSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 58293268429658650}
   - component: {fileID: 82542742710771572}
   - component: {fileID: 114801597728172246}
+  - component: {fileID: 95699941757063194}
   m_Layer: 0
   m_Name: enemyGrunt2
   m_TagString: Enemy
@@ -167,6 +168,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!95 &95699941757063194
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1929122695086638}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9d5d1cd30758c00478cfab9c262f5820, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114801597728172246
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -182,8 +200,8 @@ MonoBehaviour:
   enemyBulletPoint: {fileID: 4674957466613030}
   enemyBullet: {fileID: 1841645218285218, guid: 161e38c171b513f428287b52a8674876,
     type: 2}
-  spawnTime: 1
-  spawnTimeRandom: 1
+  spawnTime: 2
+  spawnTimeRandom: 2
   shotsfx: {fileID: 0}
 --- !u!212 &212415070118637216
 SpriteRenderer:
