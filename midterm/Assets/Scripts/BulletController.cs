@@ -59,6 +59,10 @@ public class BulletController : MonoBehaviour {
 			Destroy (other.gameObject,1f);
 
 		}
+		if (other.tag == "Boss") {
+			gm.points += 100;
+			audio.PlayOneShot (enemyShipSfx, 1.0f);
+		}
 //Destroys meteors
 		if (other.tag == "Rock") {
 			audio.PlayOneShot (meteorSfx, 1.0f);
@@ -69,7 +73,7 @@ public class BulletController : MonoBehaviour {
 		}
 
 //Preserves bullet if it hits another bullet or the player. Otherwise, destroys it.
-		if (other.tag != "Player" && other.tag != "Bullet") {
+		if (other.tag != "Player" && other.tag != "Bullet" && other.tag != "PBullet") {
 			if (other.transform.parent != null) {
 				if (other.transform.parent.tag == "Player") {
 					return;

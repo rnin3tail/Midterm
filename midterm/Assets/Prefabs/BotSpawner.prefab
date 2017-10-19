@@ -52,9 +52,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySpawn: {fileID: 1929122695086638, guid: a3084de1ecd004c66a6677db591498a6, type: 2}
-  rockSpawn: {fileID: 1509985953838362, guid: 224fc178827d60a4fadee7f50e9e173b, type: 2}
-  spawnTime: 5
-  spawnTimeRandom: 5
+  enemy2Spawn: {fileID: 1483757438366248, guid: b207755ac744549309f87dc787d52676,
+    type: 2}
+  rockSpawn: {fileID: 1345902836383422, guid: e2fd58cb1acc89d468b98a93330b1367, type: 2}
+  lifeSpawn: {fileID: 0}
+  spawnTime: 7
+  spawnTimeRandom: 7
   xmin: -25
   xmax: 25
   ymin: -27

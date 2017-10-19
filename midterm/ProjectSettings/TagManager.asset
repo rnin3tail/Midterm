@@ -17,6 +17,8 @@ TagManager:
   - GameMaster
   - Enemy2
   - Heart
+  - Boss
+  - PBullet
   layers:
   - Default
   - TransparentFX

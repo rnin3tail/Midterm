@@ -26,9 +26,12 @@ public class enemyBulletController : MonoBehaviour {
 		}
 
 //Preserves bullet if it hits an Enemy (including itself) and other bullets. Otherwise, destroys it.
-		if (other.tag != "Enemy" && other.tag != "Bullet") {
+		if (other.tag != "Enemy" && other.tag != "Bullet"  && other.tag != "Boss") {
 			if (other.transform.parent != null) {
 				if (other.transform.parent.tag == "Enemy") {
+					return;
+				}
+				if (other.transform.parent.tag == "Boss") {
 					return;
 				}
 			}

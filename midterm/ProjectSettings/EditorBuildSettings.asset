@@ -17,3 +17,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LevelPicker.unity
     guid: 9ada4a03d76785f4cb128450d3ca9fd9
+  - enabled: 1
+    path: Assets/Scenes/Level3.unity
+    guid: 7798950a1a152476fa6e450f1d0139c1
+  - enabled: 1
+    path: Assets/Scenes/Level4.unity
+    guid: 78eca97c4dc0d4ef48b3c47294ed038b
+  - enabled: 1
+    path: Assets/Scenes/Winning.unity
+    guid: 89cbcd3b2a74d445eacc6521c36d366f
