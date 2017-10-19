@@ -50,7 +50,7 @@ public class BulletController : MonoBehaviour {
 
 		}
 // etc etc, New point values and effects for different enemies.
-		if (other.tag == "enemy2") {
+		if (other.tag == "Enemy2") {
 			audio.PlayOneShot (enemyShipSfx, 1.0f);
 			other.GetComponent<Animator> ().Play ("gruntDeath");
 			gm.points += 100;

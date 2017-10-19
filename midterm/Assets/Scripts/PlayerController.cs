@@ -175,7 +175,7 @@ public class PlayerController : MonoBehaviour {
 			Debug.Log ("Hit Wall");
 			transform.position = new Vector2 (leftWall.transform.position.x+3f, transform.position.y);
 		}
-		if (col.tag == "Enemy") {
+		if (col.tag == "Enemy" || col.tag == "Enemy2") {
 			Damage (1);
 			audio.PlayOneShot (enemyShipSfx, 1.0f);
 			col.GetComponent<Animator> ().Play ("gruntDeath");

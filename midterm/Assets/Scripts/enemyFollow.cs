@@ -35,6 +35,10 @@ public class enemyFollow : MonoBehaviour {
 		angle = angle - 90f;
 		transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
+		if (this.gameObject.tag == "Enemy") {
+			
+		
+
 		//move towards the player
 		if (Vector3.Distance (transform.position, target.position) > 15f) { //move if distance from target is greater than 15
 			transform.Translate (new Vector3 (speed * Time.deltaTime, speed * Time.deltaTime, 0));
@@ -49,6 +53,12 @@ public class enemyFollow : MonoBehaviour {
 
 				Debug.Log (spawnTimer);
 				ResetSpawnTimer ();
+			}
+			}
+		}
+		if (this.gameObject.tag == "Enemy2") {
+			if (Vector3.Distance (transform.position, target.position) > 0f) { //move if distance from target is greater than 15
+				transform.Translate (new Vector3 (speed * Time.deltaTime, speed * Time.deltaTime, 0));
 			}
 		}
 
