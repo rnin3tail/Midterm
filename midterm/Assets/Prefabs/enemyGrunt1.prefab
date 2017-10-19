@@ -200,8 +200,8 @@ MonoBehaviour:
   enemyBulletPoint: {fileID: 4427188023604724}
   enemyBullet: {fileID: 1841645218285218, guid: 161e38c171b513f428287b52a8674876,
     type: 2}
-  spawnTime: 2
-  spawnTimeRandom: 2
+  spawnTime: 3
+  spawnTimeRandom: 3
   shotsfx: {fileID: 0}
 --- !u!212 &212143885455212866
 SpriteRenderer:

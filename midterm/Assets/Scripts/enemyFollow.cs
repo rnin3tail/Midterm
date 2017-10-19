@@ -37,7 +37,6 @@ public class enemyFollow : MonoBehaviour {
 
 		if (this.gameObject.tag == "Enemy") {
 			
-		
 
 		//move towards the player
 		if (Vector3.Distance (transform.position, target.position) > 15f) { //move if distance from target is greater than 15
@@ -46,7 +45,6 @@ public class enemyFollow : MonoBehaviour {
 			
 		if (Vector3.Distance (transform.position, target.position) <= 15f) { 
 			spawnTimer -= Time.deltaTime;
-			Debug.Log (spawnTimer);
 			if (spawnTimer <= 0.0f) {
 				audio.PlayOneShot (shotsfx, 1.0f);
 				Instantiate (enemyBullet, enemyBulletPoint.position, enemyBulletPoint.rotation);
@@ -71,9 +69,9 @@ public class enemyFollow : MonoBehaviour {
 // Rocks should destroy enemy ships. But they don't :/
 	void OnTriggerEnter2D (Collider2D col) {
 		Debug.Log ("collision");
-		if (col.tag== "Rock") {
+		if (col.CompareTag("Rock")) {
 			Debug.Log ("Rock should destroy ship");
-			Destroy (this.gameObject);
+			Destroy (this.gameObject,1f);
 		}
 	}
 }

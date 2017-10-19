@@ -18,16 +18,18 @@ public class ChangeScene : MonoBehaviour {
 
 	public void ChangeToScene(int SceneToChangeTo)
 	{
+
+		if (SceneToChangeTo == 10) 
+		{
+			Application.Quit(); //quits build, does not work in editor
+		}
+
 		Time.timeScale = 1;
 		SceneManager.LoadScene(SceneToChangeTo);
 
 		StartCoroutine("Delay");
 
-		if (SceneToChangeTo == 10) 
-		{
-			Application.Quit(); //quits build, does not work in editor
 
-		}
 	}
 
 	IEnumerator Delay ()

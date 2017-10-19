@@ -38,7 +38,7 @@ public class BulletController : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D (Collider2D other) {
-		
+
 //Destroys enemy ships.
 		if (other.tag == "Enemy") {
 			audio.PlayOneShot (enemyShipSfx, 1.0f);
@@ -67,6 +67,7 @@ public class BulletController : MonoBehaviour {
 			other.GetComponent<Collider2D> ().enabled = false;
 			Destroy (other.gameObject);
 		}
+
 //Preserves bullet if it hits another bullet or the player. Otherwise, destroys it.
 		if (other.tag != "Player" && other.tag != "Bullet") {
 			if (other.transform.parent != null) {
@@ -75,16 +76,19 @@ public class BulletController : MonoBehaviour {
 				}
 			}
 
-			Debug.Log ("Hit: " + other.tag);
-			StartCoroutine ("DelayedDestruction");
+			Debug.Log ("Has Hit: " + other.tag);
+
+			//StartCoroutine ("DelayedDestruction");
+			this.GetComponent<Collider2D> ().enabled = false;
+			this.GetComponent<SpriteRenderer> ().enabled = false;
+			Destroy(this.gameObject, 1f); // enemyShipSfx.length makes the game wait that amount of seconds before destrying. Gives a chance for audio to play. 
+
 		}
 
 	}
 
 	IEnumerator DelayedDestruction () {
-
 		yield return new WaitForSeconds (1f);	
-		Destroy (this.gameObject, 1f); // enemyShipSfx.length makes the game wait that amount of seconds before destrying. Gives a chance for audio to play. 
 	}
 
 }

@@ -13,6 +13,15 @@ public class GameMaster : MonoBehaviour {
 	private int lives;
 	public Text livesText;
 
+//variables required to spawn a life after a certain amount of time. 
+	public float spawnTime;
+	private float spawnTimer;
+// choose x and y axis to spawn things.
+	public float xmin;
+	public float xmax;
+	public float ymin;
+	public float ymax;
+
 	void Start () {
 
 		player = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerController> ();
@@ -25,5 +34,7 @@ public class GameMaster : MonoBehaviour {
 		lives = player.curHealth;
 		pointsText.text = ("Points \n" + points);
 		livesText.text = ("x " + lives);
+
+	
 	}
 }

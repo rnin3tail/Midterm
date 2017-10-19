@@ -16,6 +16,7 @@ TagManager:
   - GameOver
   - GameMaster
   - Enemy2
+  - Heart
   layers:
   - Default
   - TransparentFX

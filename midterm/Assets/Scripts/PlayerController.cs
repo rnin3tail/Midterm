@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour {
 	public AudioClip shotsfx;
 	public AudioClip damagesfx;
 	public AudioClip deathsfx;
+	public AudioClip lifeUpsfx;
 	AudioSource audio;
 
 //*** health system
@@ -186,7 +187,11 @@ public class PlayerController : MonoBehaviour {
 			audio.PlayOneShot (meteorSfx, 1.0f);
 			Instantiate (meteorDeath, col.transform.position, col.transform.rotation);
 			Destroy (col.gameObject);
-
+		}
+		if (col.tag == "Heart") {
+			curHealth += 1;
+			audio.PlayOneShot (lifeUpsfx, 1.0f);
+			Destroy (col.gameObject);
 		}
 	}
 //Player has died

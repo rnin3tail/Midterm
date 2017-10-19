@@ -196,9 +196,9 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1310857657995648}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 31528e1eca69c5444b40c3550be6be2b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -223,7 +223,8 @@ MonoBehaviour:
   speed: 0
   maxSpeed: 0
   shotsfx: {fileID: 8300000, guid: 6832373760b9eab4eb32c7d71c879aaa, type: 3}
-  damagesfx: {fileID: 0}
+  damagesfx: {fileID: 8300000, guid: 2e3b6a375faea1d429299ec79e5727f0, type: 3}
+  deathsfx: {fileID: 8300000, guid: 903a83d59ff4a864390919709d3661c0, type: 3}
   curHealth: 0
   maxHealth: 3
   deathCheck: 0
@@ -234,6 +235,10 @@ MonoBehaviour:
   rightWall: {fileID: 0}
   bulletPoint: {fileID: 4359783672444120}
   bullet: {fileID: 1916075194449968, guid: 30168d64e44818d448e00cb5e9979a9f, type: 2}
+  enemyShipSfx: {fileID: 8300000, guid: 903a83d59ff4a864390919709d3661c0, type: 3}
+  meteorSfx: {fileID: 8300000, guid: 7d6abe197ff4d6c418246652628e9817, type: 3}
+  meteorDeath: {fileID: 1393140760169362, guid: f0faeb052b2367b4b8b5f12b6ab5bc3c,
+    type: 2}
 --- !u!212 &212584326529695028
 SpriteRenderer:
   m_ObjectHideFlags: 1
