@@ -6,7 +6,7 @@ using UnityEngine;
 public class TimeDisplay : MonoBehaviour {
 
 	public string levelToLoad;
-	private float timer = 30f;
+	private float timer = 300f;
 	private Text timerSeconds;
 
 	// Use this for initialization

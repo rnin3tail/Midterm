@@ -59,7 +59,7 @@ public class enemyFollow : MonoBehaviour {
 			
 
 		//move towards the player
-		if (Vector3.Distance (transform.position, target.position) > 15f) { //move if distance from target is greater than 15
+		if (Vector3.Distance (transform.position, target.position) > 7f) { //move if distance from target is greater than 15
 			transform.Translate (new Vector3 (speed * Time.deltaTime, speed * Time.deltaTime, 0));
 		}
 			

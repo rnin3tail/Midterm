@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour {
 	private Rigidbody2D rigiBody;
 //Animator
 	private Animator anim;
+	private bool movingUp;
 
 //Plays audio
 	public AudioClip shotsfx;
@@ -55,6 +56,8 @@ public class PlayerController : MonoBehaviour {
 		hurt = false;
 		paused = false; 
 		canControl = false;
+		movingUp = false;
+
 
 		speed = 10f; 
 		maxSpeed = 50f;
@@ -105,13 +108,15 @@ public class PlayerController : MonoBehaviour {
 // Accelerate in direction faced
 		if (Input.GetKey (KeyCode.UpArrow)) {
 			//rigiBody.velocity = new Vector2 (rigiBody.velocity.x, rigiBody.velocity.y + speed);
-			rigiBody.drag = 0f;
+			rigiBody.drag = 1f;
 			rigiBody.AddForce (transform.up * speed);
+			anim.SetBool ("movingUp", true);
 		}
 
 // Slow down once UP key is released
 		if (Input.GetKeyUp (KeyCode.UpArrow)) {
-			rigiBody.drag = 1f;
+			rigiBody.drag = 10f;
+				anim.SetBool ("movingUp", false);
 
 			//transform.position = transform.position;
 			//rigiBody.velocity = new Vector2 (rigiBody.velocity.x,rigiBody.velocity.y);
