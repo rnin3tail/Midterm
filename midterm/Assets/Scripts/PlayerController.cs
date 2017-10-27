@@ -17,6 +17,9 @@ public class PlayerController : MonoBehaviour {
 //Animator
 	private Animator anim;
 	private bool movingUp;
+	private bool movingLeft;
+	private bool movingRight;
+	private bool movingDown;
 
 //Plays audio
 	public AudioClip shotsfx;
@@ -32,20 +35,20 @@ public class PlayerController : MonoBehaviour {
 	public bool hurt;
 
 //Boundaries
-	public GameObject topWall;
-	public GameObject botWall;
-	public GameObject leftWall;
-	public GameObject rightWall;
+	//public GameObject topWall;
+	//public GameObject botWall;
+	//public GameObject leftWall;
+	//public GameObject rightWall;
 
 //laser beam
-	public Transform bulletPoint;
-	public GameObject bullet;
+	//public Transform bulletPoint;
+	//public GameObject bullet;
 
 // Enemy Death stuff
-	public AudioClip enemyShipSfx;
-	public AudioClip meteorSfx;
+	//public AudioClip enemyShipSfx;
+	//public AudioClip meteorSfx;
 //particle 
-	public GameObject meteorDeath;
+	//public GameObject meteorDeath;
 
 
 	void Start () {
@@ -57,6 +60,9 @@ public class PlayerController : MonoBehaviour {
 		paused = false; 
 		canControl = false;
 		movingUp = false;
+		movingLeft = false;
+		movingRight = false;
+		movingDown = false;
 
 
 		speed = 10f; 
@@ -64,14 +70,14 @@ public class PlayerController : MonoBehaviour {
 		rigiBody = gameObject.GetComponent<Rigidbody2D> (); // Gain access to Ship's body component
 		anim = gameObject.GetComponent<Animator>();
 		audio = gameObject.GetComponent<AudioSource> ();
+
 //four walls in the level
-		topWall = GameObject.FindGameObjectWithTag ("TWall");
-		botWall = GameObject.FindGameObjectWithTag ("BWall");
-		leftWall = GameObject.FindGameObjectWithTag ("LWall");
-		rightWall = GameObject.FindGameObjectWithTag ("RWall");
+		//topWall = GameObject.FindGameObjectWithTag ("TWall");
+		//botWall = GameObject.FindGameObjectWithTag ("BWall");
+		//leftWall = GameObject.FindGameObjectWithTag ("LWall");
+		//rightWall = GameObject.FindGameObjectWithTag ("RWall");
 // turn off the game over screen 
 		gameOver.SetActive (false);
-
 	}
 
 	void Update () {
@@ -87,58 +93,59 @@ public class PlayerController : MonoBehaviour {
 				hurt = false;
 			}
 
-// Turn Left
+// Move Left
 		if (Input.GetKey (KeyCode.LeftArrow)) { 
-			//rigiBody.velocity = new Vector2 (rigiBody.velocity.x - speed, rigiBody.velocity.y);
-			transform.Rotate (Vector3.forward * 5f);
+				rigiBody.AddForce (transform.right * 25f * -speed);
+				anim.SetBool ("movingLeft", true);
+				anim.SetBool("movingRight",false);
+	
 		}
-		//if (Input.GetKeyUp (KeyCode.LeftArrow)) { 
-		//rigiBody.velocity = new Vector2 (rigiBody.velocity.x + speed, rigiBody.velocity.y);
-		//}
-
-// Turn right
+			if (Input.GetKeyUp (KeyCode.LeftArrow)) {
+				rigiBody.drag = 10f;
+				anim.SetBool ("movingLeft", false);
+			}
+		
+// Move Right
 		if (Input.GetKey (KeyCode.RightArrow)) { 
-			//rigiBody.velocity = new Vector2 (rigiBody.velocity.x + speed, rigiBody.velocity.y);
-			transform.Rotate (Vector3.forward * -5f);
+				rigiBody.AddForce (transform.right * 25f * speed);
+				anim.SetBool ("movingRight", true);
+				anim.SetBool ("movingLeft", false);
 		}
-		//if (Input.GetKeyUp (KeyCode.RightArrow)) { 
-		//	//rigiBody.velocity = new Vector2 (rigiBody.velocity.x - speed, rigiBody.velocity.y);
-		//}
-
-// Accelerate in direction faced
+			if (Input.GetKeyUp (KeyCode.RightArrow)) {
+				rigiBody.drag = 10f;
+				anim.SetBool ("movingRight", false);
+			}
+// Move Up
 		if (Input.GetKey (KeyCode.UpArrow)) {
-			//rigiBody.velocity = new Vector2 (rigiBody.velocity.x, rigiBody.velocity.y + speed);
-			rigiBody.drag = 1f;
+			rigiBody.drag = 2f;
 			rigiBody.AddForce (transform.up * speed);
 			anim.SetBool ("movingUp", true);
+			anim.SetBool ("movingDown", false);
 		}
-
 // Slow down once UP key is released
 		if (Input.GetKeyUp (KeyCode.UpArrow)) {
 			rigiBody.drag = 10f;
-				anim.SetBool ("movingUp", false);
-
-			//transform.position = transform.position;
-			//rigiBody.velocity = new Vector2 (rigiBody.velocity.x,rigiBody.velocity.y);
-			//rigiBody.AddForce(transform.up * 0f);
-			//rigiBody.velocity = new Vector2 (rigiBody.velocity.x, rigiBody.velocity.y - speed);
+			anim.SetBool ("movingUp", false);
 		}
 
 //Brakes and move backwards
 		if (Input.GetKey (KeyCode.DownArrow)) {
+				rigiBody.drag = 2f;
 			rigiBody.AddForce (transform.up * -speed);
-			//rigiBody.velocity = new Vector2 (rigiBody.velocity.x, rigiBody.velocity.y - speed);
+				anim.SetBool ("movingDown", true);
+				anim.SetBool ("movingUp", false);
 		}
-
-		//if (Input.GetKeyUp (KeyCode.DownArrow)) {
-		//	rigiBody.velocity = new Vector2 (rigiBody.velocity.x, rigiBody.velocity.y + speed);
-		//}
-
+			if (Input.GetKeyUp (KeyCode.DownArrow)) {
+				rigiBody.drag = 10f;
+				anim.SetBool ("movingDown", false);
+		}
+		
 // Shoot Gun. Disables shooting while in pause mode.
-		if (Input.GetKeyDown (KeyCode.Space)) {
-			Instantiate (bullet, bulletPoint.position, bulletPoint.rotation); 
-			audio.PlayOneShot (shotsfx, 1.0f);
-		}
+	//	if (Input.GetKeyDown (KeyCode.Space)) {
+			//Instantiate (bullet, bulletPoint.position, bulletPoint.rotation); 
+	//		audio.PlayOneShot (shotsfx, 1.0f);
+	//	}
+
 	}
 // Pause Menu. Also disables shooting.
 		if (Input.GetKeyDown (KeyCode.Escape)) {
@@ -165,32 +172,16 @@ public class PlayerController : MonoBehaviour {
 }
 // Collisions... Wall collisions cause ship to transform to the opposite wall.
 	void OnTriggerEnter2D (Collider2D col) {
-		if (col.tag == "BWall") {
-			Debug.Log ("Hit Wall");
-			transform.position = new Vector2 (transform.position.x, topWall.transform.position.y-3f);
-		}
-		if (col.tag == "TWall") {
-			Debug.Log ("Hit Wall");
-			transform.position = new Vector2 (transform.position.x, botWall.transform.position.y+3f);
-		}
-		if (col.tag == "LWall") {
-			Debug.Log ("Hit Wall");
-			transform.position = new Vector2 (rightWall.transform.position.x-3f, transform.position.y);
-		}
-		if (col.tag == "RWall") {
-			Debug.Log ("Hit Wall");
-			transform.position = new Vector2 (leftWall.transform.position.x+3f, transform.position.y);
-		}
 		if (col.tag == "Enemy" || col.tag == "Enemy2") {
 			Damage (1);
-			audio.PlayOneShot (enemyShipSfx, 1.0f);
+			//audio.PlayOneShot (enemyShipSfx, 1.0f);
 			col.GetComponent<Animator> ().Play ("gruntDeath");
 			Destroy (col.gameObject,1f);
 		}
 		if (col.tag == "Rock") {
 			Damage (1);
-			audio.PlayOneShot (meteorSfx, 1.0f);
-			Instantiate (meteorDeath, col.transform.position, col.transform.rotation);
+			//audio.PlayOneShot (meteorSfx, 1.0f);
+			//Instantiate (meteorDeath, col.transform.position, col.transform.rotation);
 			Destroy (col.gameObject);
 		}
 		if (col.tag == "Heart") {
@@ -214,7 +205,7 @@ public class PlayerController : MonoBehaviour {
 //Wait a bit before death
 	IEnumerator DelayedRespawn () {
 		//gameObject.GetComponent<SpriteRenderer> ().enabled = false;
-		yield return new WaitForSeconds (.7f);
+		yield return new WaitForSeconds (2f);
 		Death();
 
 	}

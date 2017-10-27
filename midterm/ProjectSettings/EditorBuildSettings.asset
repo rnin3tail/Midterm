@@ -9,20 +9,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 331adfc4772c2d64eaff56095433a3d8
   - enabled: 1
-    path: Assets/Scenes/Level1.unity
-    guid: f6c35535c961e4b9a94caadfb9bad432
-  - enabled: 1
-    path: Assets/Scenes/Level2.unity
-    guid: bed162cb2c6ec4b24ae0f50cb53ba4e5
+    path: Assets/Scenes/Halloween1.unity
+    guid: 6b4c92dc7276740978e7f893a3a5f573
   - enabled: 1
     path: Assets/Scenes/LevelPicker.unity
     guid: 9ada4a03d76785f4cb128450d3ca9fd9
-  - enabled: 1
-    path: Assets/Scenes/Level3.unity
-    guid: 7798950a1a152476fa6e450f1d0139c1
-  - enabled: 1
-    path: Assets/Scenes/Level4.unity
-    guid: 78eca97c4dc0d4ef48b3c47294ed038b
   - enabled: 1
     path: Assets/Scenes/Winning.unity
     guid: 89cbcd3b2a74d445eacc6521c36d366f

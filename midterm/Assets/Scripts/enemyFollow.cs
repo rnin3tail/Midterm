@@ -33,7 +33,7 @@ public class enemyFollow : MonoBehaviour {
 		Vector3 dir = target.position - transform.position;
 		float angle = Mathf.Atan2(dir.y,dir.x) * Mathf.Rad2Deg;
 		angle = angle - 90f;
-		transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+		transform.localRotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
 
 		if (this.gameObject.tag == "Boss") {

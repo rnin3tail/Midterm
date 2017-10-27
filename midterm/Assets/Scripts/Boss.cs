@@ -20,7 +20,7 @@ public class Boss : MonoBehaviour {
 	void Update(){
 		
 
-		if (Bosshealth == 0) {
+		if (Bosshealth <= 0) {
 			Destroy (BossEnemy);
 			audio.PlayOneShot (enemyShipSfx, 1.0f);
 		}
