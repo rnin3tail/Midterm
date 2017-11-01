@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour {
 		movingDown = false;
 
 
-		speed = 10f; 
+		speed = 17f; 
 		maxSpeed = 50f;
 		rigiBody = gameObject.GetComponent<Rigidbody2D> (); // Gain access to Ship's body component
 		anim = gameObject.GetComponent<Animator>();
