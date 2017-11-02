@@ -34,25 +34,24 @@ public class PlayerController : MonoBehaviour {
 	public bool deathCheck;
 	public bool hurt;
 
-//Boundaries
-	//public GameObject topWall;
-	//public GameObject botWall;
-	//public GameObject leftWall;
-	//public GameObject rightWall;
 
-//laser beam
-	//public Transform bulletPoint;
-	//public GameObject bullet;
+// gamemaster for points
+	private GameMaster gm;
 
-// Enemy Death stuff
-	//public AudioClip enemyShipSfx;
-	//public AudioClip meteorSfx;
-//particle 
-	//public GameObject meteorDeath;
+// Ghost turns into person...
+	public GameObject ghost;
+	public GameObject person;
 
+// Key/Door stuff
+	public bool keyObtained;
+	public GameObject keyText;
+	public GameObject keyImage;
+	public GameObject door;
+	public AudioClip doorsfx;
 
 	void Start () {
-		
+		keyObtained = false;
+
 		curHealth = maxHealth;
 
 		deathCheck = false;
@@ -65,11 +64,13 @@ public class PlayerController : MonoBehaviour {
 		movingDown = false;
 
 
-		speed = 17f; 
+		speed = 10f; 
 		maxSpeed = 50f;
 		rigiBody = gameObject.GetComponent<Rigidbody2D> (); // Gain access to Ship's body component
 		anim = gameObject.GetComponent<Animator>();
 		audio = gameObject.GetComponent<AudioSource> ();
+		gm = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster> (); 
+
 
 //four walls in the level
 		//topWall = GameObject.FindGameObjectWithTag ("TWall");
@@ -178,17 +179,50 @@ public class PlayerController : MonoBehaviour {
 			col.GetComponent<Animator> ().Play ("gruntDeath");
 			Destroy (col.gameObject,1f);
 		}
-		if (col.tag == "Rock") {
-			Damage (1);
-			//audio.PlayOneShot (meteorSfx, 1.0f);
-			//Instantiate (meteorDeath, col.transform.position, col.transform.rotation);
-			Destroy (col.gameObject);
-		}
 		if (col.tag == "Heart") {
 			curHealth += 1;
 			audio.PlayOneShot (lifeUpsfx, 1.0f);
 			Destroy (col.gameObject);
 		}
+		if (col.tag == "Soul") {
+			gm.points += 1;
+			audio.PlayOneShot (lifeUpsfx, 1.0f);
+			Destroy (col.gameObject);
+		}
+		if (col.tag == "Key") {
+			keyObtained = true;
+			keyImage.SetActive (true);
+			audio.PlayOneShot (lifeUpsfx, 1.0f);
+			Destroy (col.gameObject);
+		}
+		if (col.tag == "Door") {
+			if (keyObtained == true) {
+				audio.PlayOneShot (doorsfx, 1.0f);
+				door.GetComponent<Animator> ().SetBool ("keyPresent", keyObtained);
+
+				StartCoroutine ("Wait");
+// State that the key needs to be obtained
+			} else {
+				keyText.SetActive (true);
+				StartCoroutine ("Wait");
+			}
+		}
+		if (col.tag == "Shrine") {
+			if (gm.points >= 10) {
+				Instantiate (person, ghost.transform.position, col.transform.rotation);
+				Destroy (ghost);
+			
+
+			} else {
+				keyText.SetActive (true);
+				keyText.GetComponent<UnityEngine.UI.Text> ().text = "Need Souls";
+				StartCoroutine ("Wait");
+
+			}
+		
+		}
+
+
 	}
 //Player has died
 	void Death () {
@@ -207,8 +241,19 @@ public class PlayerController : MonoBehaviour {
 		//gameObject.GetComponent<SpriteRenderer> ().enabled = false;
 		yield return new WaitForSeconds (2f);
 		Death();
-
 	}
+
+	IEnumerator Wait () {
+		yield return new WaitForSeconds (3f);
+
+		if (keyText.active) {
+			keyText.SetActive (false);
+		}
+		if (keyObtained == true) {
+			door.SetActive (false);
+		}
+	}
+
 // Player was hit.
 	public void Damage (int dmg) {
 
@@ -224,5 +269,11 @@ public class PlayerController : MonoBehaviour {
 		curHealth -= dmg;
 
 	}
+	// void OnGUI() {
+	//	if (keyObtained == true) {
+	//		GUI.Label (new Rect (140, Screen.height - 50, Screen.width - 300, 120), ("Key is required!"));
+	//	}
+	//}
+
 
 }

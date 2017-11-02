@@ -35,26 +35,6 @@ public class enemyFollow : MonoBehaviour {
 		angle = angle - 90f;
 		transform.localRotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
-
-		if (this.gameObject.tag == "Boss") {
-
-
-			//move towards the player
-			if (Vector3.Distance (transform.position, target.position) > 18f) { //move if distance from target is greater than 15
-				transform.Translate (new Vector3 (speed * Time.deltaTime, speed * Time.deltaTime, 0));
-			}
-
-			if (Vector3.Distance (transform.position, target.position) <= 20f) { 
-				spawnTimer -= Time.deltaTime;
-				if (spawnTimer <= 0.0f) {
-					audio.PlayOneShot (shotsfx, 1.0f);
-					Instantiate (enemyBullet, enemyBulletPoint.position, enemyBulletPoint.rotation);
-
-					Debug.Log (spawnTimer);
-					ResetSpawnTimer ();
-				}
-			}
-		}
 		if (this.gameObject.tag == "Enemy") {
 			
 
@@ -67,7 +47,6 @@ public class enemyFollow : MonoBehaviour {
 			spawnTimer -= Time.deltaTime;
 			if (spawnTimer <= 0.0f) {
 				audio.PlayOneShot (shotsfx, 1.0f);
-				Instantiate (enemyBullet, enemyBulletPoint.position, enemyBulletPoint.rotation);
 
 				Debug.Log (spawnTimer);
 				ResetSpawnTimer ();

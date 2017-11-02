@@ -1,0 +1,475 @@
+fileFormatVersion: 2
+guid: e9a8807d3637a654eaa0766202cd7122
+timeCreated: 1509538014
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: 4-colors-of-glowing-balls-1-with-shadow_0
+    21300002: 4-colors-of-glowing-balls-1-with-shadow_1
+    21300004: 4-colors-of-glowing-balls-1-with-shadow_2
+    21300006: 4-colors-of-glowing-balls-1-with-shadow_3
+    21300008: 4-colors-of-glowing-balls-1-with-shadow_4
+    21300010: 4-colors-of-glowing-balls-1-with-shadow_5
+    21300012: 4-colors-of-glowing-balls-1-with-shadow_6
+    21300014: 4-colors-of-glowing-balls-1-with-shadow_7
+    21300016: 4-colors-of-glowing-balls-1-with-shadow_8
+    21300018: 4-colors-of-glowing-balls-1-with-shadow_9
+    21300020: 4-colors-of-glowing-balls-1-with-shadow_10
+    21300022: 4-colors-of-glowing-balls-1-with-shadow_11
+    21300024: 4-colors-of-glowing-balls-1-with-shadow_12
+    21300026: 4-colors-of-glowing-balls-1-with-shadow_13
+    21300028: 4-colors-of-glowing-balls-1-with-shadow_14
+    21300030: 4-colors-of-glowing-balls-1-with-shadow_15
+    21300032: 4-colors-of-glowing-balls-1-with-shadow_16
+    21300034: 4-colors-of-glowing-balls-1-with-shadow_17
+    21300036: 4-colors-of-glowing-balls-1-with-shadow_18
+    21300038: 4-colors-of-glowing-balls-1-with-shadow_19
+    21300040: 4-colors-of-glowing-balls-1-with-shadow_20
+    21300042: 4-colors-of-glowing-balls-1-with-shadow_21
+    21300044: 4-colors-of-glowing-balls-1-with-shadow_22
+    21300046: 4-colors-of-glowing-balls-1-with-shadow_23
+    21300048: 4-colors-of-glowing-balls-1-with-shadow_24
+    21300050: 4-colors-of-glowing-balls-1-with-shadow_25
+    21300052: 4-colors-of-glowing-balls-1-with-shadow_26
+    21300054: 4-colors-of-glowing-balls-1-with-shadow_27
+    21300056: 4-colors-of-glowing-balls-1-with-shadow_28
+    21300058: 4-colors-of-glowing-balls-1-with-shadow_29
+    21300060: 4-colors-of-glowing-balls-1-with-shadow_30
+    21300062: 4-colors-of-glowing-balls-1-with-shadow_31
+    21300064: 4-colors-of-glowing-balls-1-with-shadow_32
+    21300066: 4-colors-of-glowing-balls-1-with-shadow_33
+    21300068: 4-colors-of-glowing-balls-1-with-shadow_34
+    21300070: 4-colors-of-glowing-balls-1-with-shadow_35
+    21300072: 4-colors-of-glowing-balls-1-with-shadow_36
+    21300074: 4-colors-of-glowing-balls-1-with-shadow_37
+    21300076: 4-colors-of-glowing-balls-1-with-shadow_38
+    21300078: 4-colors-of-glowing-balls-1-with-shadow_39
+  externalObjects: {}
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: 4-colors-of-glowing-balls-1-with-shadow_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 129
+        width: 384
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 4-colors-of-glowing-balls-1-with-shadow_1
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 98
+        width: 26
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 4-colors-of-glowing-balls-1-with-shadow_2
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 98
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 4-colors-of-glowing-balls-1-with-shadow_3
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 97
+        width: 30
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 4-colors-of-glowing-balls-1-with-shadow_4
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 98
+        width: 21
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 4-colors-of-glowing-balls-1-with-shadow_5
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 97
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 4-colors-of-glowing-balls-1-with-shadow_6
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 96
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 4-colors-of-glowing-balls-1-with-shadow_7
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 65
+        width: 22
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 4-colors-of-glowing-balls-1-with-shadow_8
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 65
+        width: 24
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 4-colors-of-glowing-balls-1-with-shadow_9
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 64
+        width: 29
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 4-colors-of-glowing-balls-1-with-shadow_10
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 65
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 4-colors-of-glowing-balls-1-with-shadow_11
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 65
+        width: 27
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 4-colors-of-glowing-balls-1-with-shadow_12
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 65
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 4-colors-of-glowing-balls-1-with-shadow_13
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 35
+        width: 26
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 4-colors-of-glowing-balls-1-with-shadow_14
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 34
+        width: 28
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 4-colors-of-glowing-balls-1-with-shadow_15
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 33
+        width: 31
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 4-colors-of-glowing-balls-1-with-shadow_16
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 34
+        width: 22
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 4-colors-of-glowing-balls-1-with-shadow_17
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 32
+        width: 25
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 4-colors-of-glowing-balls-1-with-shadow_18
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 32
+        width: 29
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 4-colors-of-glowing-balls-1-with-shadow_19
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 2
+        width: 23
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 4-colors-of-glowing-balls-1-with-shadow_20
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 2
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 4-colors-of-glowing-balls-1-with-shadow_21
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 1
+        width: 28
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 4-colors-of-glowing-balls-1-with-shadow_22
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 2
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 4-colors-of-glowing-balls-1-with-shadow_23
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 1
+        width: 28
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 4-colors-of-glowing-balls-1-with-shadow_24
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 0
+        width: 25
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    outline: []
+    physicsShape: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

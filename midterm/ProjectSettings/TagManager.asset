@@ -19,6 +19,10 @@ TagManager:
   - Heart
   - Boss
   - PBullet
+  - Soul
+  - Door
+  - Key
+  - Shrine
   layers:
   - Default
   - TransparentFX
