@@ -37,8 +37,6 @@ public class GameMaster : MonoBehaviour {
 		lives = player.curHealth;
 		pointsText.text = ("Points \n" + points);
 		livesText.text = ("x " + lives);
-
-	
 	}
 
 

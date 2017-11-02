@@ -18,7 +18,9 @@ TagManager:
   - Enemy2
   - Heart
   - Boss
-  - PBullet
+  - Soul
+  - Door
+  - Key
   layers:
   - Default
   - TransparentFX

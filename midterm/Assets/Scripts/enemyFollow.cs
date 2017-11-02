@@ -48,7 +48,6 @@ public class enemyFollow : MonoBehaviour {
 				spawnTimer -= Time.deltaTime;
 				if (spawnTimer <= 0.0f) {
 					audio.PlayOneShot (shotsfx, 1.0f);
-					Instantiate (enemyBullet, enemyBulletPoint.position, enemyBulletPoint.rotation);
 
 					Debug.Log (spawnTimer);
 					ResetSpawnTimer ();
@@ -67,7 +66,6 @@ public class enemyFollow : MonoBehaviour {
 			spawnTimer -= Time.deltaTime;
 			if (spawnTimer <= 0.0f) {
 				audio.PlayOneShot (shotsfx, 1.0f);
-				Instantiate (enemyBullet, enemyBulletPoint.position, enemyBulletPoint.rotation);
 
 				Debug.Log (spawnTimer);
 				ResetSpawnTimer ();
